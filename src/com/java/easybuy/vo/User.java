@@ -4,8 +4,11 @@ package com.java.easybuy.vo;
  * Created by fsweb on 17-3-27.
  */
 public class User {
+    private int id;
     private String name;
     private String password;
+
+
 
     public String getName() {
         return name;
