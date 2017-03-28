@@ -4,3 +4,23 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 </web-app>
+
+
+
+
+
+<!--要使用tomcat的数据库连接池，需要在context.xml中添加以下代码：
+<Context>
+<Resource name="jdbc/easybuy"
+          auth="Container"
+          type="javax.sql.DataSource"
+          driverClassName="com.mysql.jdbc.Driver"
+          url="jdbc:mysql://192.168.1.107:3306/easybuy?useSSL=true"
+          username="webuser"
+          password="wwwlumr"
+          maxActive="100" //单位是秒
+          maxIdle="30"
+          maxWait="100"
+/>
+</Context>
+-->

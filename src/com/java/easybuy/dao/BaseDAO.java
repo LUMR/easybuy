@@ -1,5 +1,7 @@
 package com.java.easybuy.dao;
 
+import com.java.easybuy.vo.User;
+
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -81,6 +83,26 @@ public class BaseDAO {
     }
 
     /**
+     * prepareStatement的executeQuery方法,使用此方法记得手动调用closeAll关闭数据库连接
+     * @param sql 同上
+     * @param obj 同上
+     * @return 返回ResultSet,不会自动关闭conn连接，必须手动关闭
+     */
+    public ResultSet preQuery(String sql,Object[] obj){
+        conn = getConnection();
+        try {
+            ps = conn.prepareStatement(sql);
+            for (int i = 0; i < obj.length; i++) {
+                ps.setObject(i+1,obj[i]);
+            }
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return rs;
+    }
+
+    /**
      * 关闭所有连接
      */
     public void closeAll() {
@@ -100,4 +122,5 @@ public class BaseDAO {
         }
 
     }
+
 }

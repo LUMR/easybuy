@@ -1,13 +1,16 @@
 package com.java.easybuy.vo;
 
+import com.java.easybuy.utils.SecurityUtils;
+
 /**
  * 用户实体
  * Created by fsweb on 17-3-27.
  */
 public class User {
     private int id;//主键
-    private String name;
+    private String loginName;
     private String password;
+    private String userName;
     private String sex;
     private String identityCode;//身份证
     private String email;
@@ -17,17 +20,16 @@ public class User {
     public User() {
     }
 
-    public User(String name, String password) {
-        this.name = name;
+    public User(String loginName, String password) {
+        this.loginName = loginName;
         this.password = password;
     }
 
-    public User(String name, String password, String sex, String email, String mobile) {
-        this.name = name;
+    public User(String loginName, String password, String userName, String sex) {
+        this.loginName = loginName;
         this.password = password;
+        this.userName = userName;
         this.sex = sex;
-        this.email = email;
-        this.mobile = mobile;
     }
 
     public int getId() {
@@ -78,12 +80,12 @@ public class User {
         this.type = type;
     }
 
-    public String getName() {
-        return name;
+    public String getLoginName() {
+        return loginName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setLoginName(String loginName) {
+        this.loginName = loginName;
     }
 
     public String getPassword() {
@@ -91,6 +93,15 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        SecurityUtils utils = new SecurityUtils();
+        this.password = utils.sha1(password);
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }

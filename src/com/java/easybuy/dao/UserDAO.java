@@ -15,11 +15,17 @@ public interface UserDAO {
     int selectUser(String username);
 
     /**
-     * 根据用户id获取用户的全部信息
-     * @param id 用户id
-     * @return 一个完整的用户对象
+     * 检查用户密码是否正确
+     * @param user 必须有用户名和密码
+     * @return 返回值：1表示密码正确，0表示密码错误，-1表示数据库错误
      */
-    User getUser(int id);
+    int checkPassword(User user);
+
+    /**
+     * 根据用户注册名获取用户的全部信息
+     * @param user 用户对象，必须有用户名，此用户对象会拥有全部用户信息
+     */
+    void getUserInfo(User user);
 
     /**
      * 增加一个user到数据库

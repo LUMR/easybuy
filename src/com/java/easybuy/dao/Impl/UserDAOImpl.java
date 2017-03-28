@@ -13,40 +13,52 @@ import java.sql.SQLException;
 public class UserDAOImpl extends BaseDAO implements UserDAO {
     @Override
     public int selectUser(String username) {
-        return 0;
+        return updateUser(null);
     }
 
     @Override
-    public User getUser(int id) {
-        String sql = "select * from easybuy_user where id = ?";
-        User user = null;
-        conn = getConnection();
-        try {
-            ps = conn.prepareStatement(sql);
-            ps.setInt(1,id);
-            rs = ps.executeQuery();
-            if (rs.next()){
-                user = new User(rs.getString("userName"),rs.getString("password"),
-                        rs.getString("sex"),rs.getString("email"),
-                        rs.getString("mobile"));
-                return user;
+    public int checkPassword(User user) {
+        return updateUser(null);
+    }
+
+    @Override
+    public void getUserInfo(User user) {
+        if (user != null && user.getLoginName() != null) {
+            String sql = "select * from easybuy_user where LoginName = ?";
+            Object[] obj = new Object[]{user.getLoginName()};
+            rs = preQuery(sql, obj);
+            try {
+                if (rs.next()) {
+                    user.setId(rs.getInt("id"));
+                    user.setUserName(rs.getString("userName"));
+                    user.setSex(rs.getString("sex"));
+                    user.setEmail(rs.getString("email"));
+                    user.setIdentityCode(rs.getString("identityCode"));
+                    user.setType(rs.getInt("type"));
+                    user.setMobile(rs.getString("mobile"));
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }finally {
-            closeAll();
         }
-        return user;
     }
 
     @Override
     public int addUser(User user) {
-        return 0;
+        String sql = "insert into easybuy_user(loginName,userName,password,sex,type) " +
+                "values(?,?,?,?,1)";
+        Object[] obj = new Object[]{user.getLoginName(), user.getUserName(), user.getPassword(), user.getSex()};
+        return preUpdate(sql, obj);
     }
 
     @Override
     public int updateUser(User user) {
-        return 0;
+        String sql = "update easybuy_user " +
+                "set loginName=?, userName=?, password = ?, sex=?, " +
+                "identityCode=?, email=?, mobile=? where id = ?";
+        Object[] obj = new Object[]{user.getLoginName(), user.getUserName(), user.getPassword(),
+                user.getSex(), user.getIdentityCode(), user.getEmail(), user.getMobile(), user.getId()};
+        return preUpdate(sql, obj);
     }
 
 }
