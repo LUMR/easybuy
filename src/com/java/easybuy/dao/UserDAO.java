@@ -9,10 +9,10 @@ import com.java.easybuy.vo.User;
 public interface UserDAO {
     /**
      * 根据用户名查询用户是否存在
-     * @param username 用户名
+     * @param user 必须有用户名
      * @return 返回值:1表示存在,0表示不存在,-1表示数据库连接错误
      */
-    int selectUser(String username);
+    int selectUser(User user);
 
     /**
      * 检查用户密码是否正确

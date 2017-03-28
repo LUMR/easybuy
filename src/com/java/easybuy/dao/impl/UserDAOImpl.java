@@ -1,4 +1,4 @@
-package com.java.easybuy.dao.Impl;
+package com.java.easybuy.dao.impl;
 
 import com.java.easybuy.dao.BaseDAO;
 import com.java.easybuy.dao.UserDAO;
@@ -12,8 +12,21 @@ import java.sql.SQLException;
  */
 public class UserDAOImpl extends BaseDAO implements UserDAO {
     @Override
-    public int selectUser(String username) {
-        return updateUser(null);
+    public int selectUser(User user) {
+        String sql = "select password from easybuy_user where loginName = ?";
+        conn = getConnection();
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setString(1,user.getLoginName());
+            rs = ps.executeQuery();
+            if (rs.next())
+                return 1;
+            else
+                return 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return -1;
+        }
     }
 
     @Override
@@ -28,7 +41,7 @@ public class UserDAOImpl extends BaseDAO implements UserDAO {
             Object[] obj = new Object[]{user.getLoginName()};
             rs = preQuery(sql, obj);
             try {
-                if (rs.next()) {
+                if (rs!=null&&rs.next()) {
                     user.setId(rs.getInt("id"));
                     user.setUserName(rs.getString("userName"));
                     user.setSex(rs.getString("sex"));
@@ -45,9 +58,9 @@ public class UserDAOImpl extends BaseDAO implements UserDAO {
 
     @Override
     public int addUser(User user) {
-        String sql = "insert into easybuy_user(loginName,userName,password,sex,type) " +
+        String sql = "insert into easybuy_user(loginName,password,email,mobile,type) " +
                 "values(?,?,?,?,1)";
-        Object[] obj = new Object[]{user.getLoginName(), user.getUserName(), user.getPassword(), user.getSex()};
+        Object[] obj = new Object[]{user.getLoginName(), user.getPassword(),user.getEmail(), user.getMobile()};
         return preUpdate(sql, obj);
     }
 

@@ -12,5 +12,6 @@
   </head>
   <body>
   <a href="/mysqlTest">数据库测试</a>
+  <a href="/Regist.jsp">注册</a>
   </body>
 </html>

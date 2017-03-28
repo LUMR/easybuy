@@ -13,23 +13,24 @@ public class User {
     private String userName;
     private String sex;
     private String identityCode;//身份证
-    private String email;
+    private String email;//邮箱
     private String mobile;//手机号
     private int type;//用户类型
 
     public User() {
     }
+    
 
     public User(String loginName, String password) {
         this.loginName = loginName;
-        this.password = password;
+        this.setPassword(password);
     }
 
-    public User(String loginName, String password, String userName, String sex) {
+    public User(String loginName, String password, String email, String mobile) {
         this.loginName = loginName;
-        this.password = password;
-        this.userName = userName;
-        this.sex = sex;
+        this.setPassword(password);
+        this.email = email;
+        this.mobile = mobile;
     }
 
     public int getId() {
