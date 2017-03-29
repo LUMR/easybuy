@@ -3,6 +3,10 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
+    <welcome-file-list>
+        <welcome-file>indexTest.jsp</welcome-file>
+    </welcome-file-list>
+
     <servlet>
         <servlet-name>kaptcha</servlet-name>
         <servlet-class>
@@ -62,8 +66,8 @@
         </init-param>
         <!-- 干扰线 生成器 -->
         <init-param>
-          <param-name>kaptcha.noise.impl</param-name>
-          <param-value>com.google.code.kaptcha.impl.DefaultNoise</param-value>
+            <param-name>kaptcha.noise.impl</param-name>
+            <param-value>com.google.code.kaptcha.impl.DefaultNoise</param-value>
         </init-param>
 
         <!-- 去掉干扰线 -->
@@ -104,14 +108,7 @@
         <servlet-name>kaptcha</servlet-name>
         <url-pattern>/kaptcha</url-pattern>
     </servlet-mapping>
-    <servlet>
-        <servlet-name>checkyzm</servlet-name>
-        <servlet-class>com.java.easybuy.servlet.KaptchaServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>checkyzm</servlet-name>
-        <url-pattern>/yzm</url-pattern>
-    </servlet-mapping>
+
 </web-app>
 
 

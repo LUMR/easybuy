@@ -9,6 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * 验证码验证服务
+ */
+@WebServlet(name = "checkyzm",urlPatterns = {"/yzm"})
 public class KaptchaServlet extends HttpServlet {
 
     @Override

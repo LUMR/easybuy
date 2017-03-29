@@ -39,9 +39,9 @@ public class UserDAOImpl extends BaseDAO implements UserDAO {
         if (user != null && user.getLoginName() != null) {
             String sql = "select * from easybuy_user where LoginName = ?";
             Object[] obj = new Object[]{user.getLoginName()};
-            rs = preQuery(sql, obj);
             try {
-                if (rs!=null&&rs.next()) {
+                rs = preQuery(sql, obj);
+                if (rs.next()) {
                     user.setId(rs.getInt("id"));
                     user.setUserName(rs.getString("userName"));
                     user.setSex(rs.getString("sex"));
