@@ -13,5 +13,19 @@
   <body>
   <a href="/mysqlTest">数据库测试</a>
   <a href="/Regist.jsp">注册</a>
+  	<form action="yzm" method="post">
+	    <img title = "点我换一张" alt="" src="kaptcha" style="cursor:pointer;" onclick="changeVerifyCode(this);">
+    	<input type="text" name="yzm">
+    	<br>
+    	<input type="submit" value="测试验证码">
+    </form>
+    
+    <script type="text/javascript">
+		//点击切换验证码
+		function changeVerifyCode(img){
+		
+			img.src = "kaptcha?"+Math.floor(Math.random()*100);   
+		}
+	</script>
   </body>
 </html>

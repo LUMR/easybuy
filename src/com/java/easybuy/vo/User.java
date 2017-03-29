@@ -20,8 +20,16 @@ public class User {
     public User() {
     }
     
+    
 
-    public User(String loginName, String password) {
+    public User(String loginName) {
+		super();
+		this.loginName = loginName;
+	}
+
+
+
+	public User(String loginName, String password) {
         this.loginName = loginName;
         this.setPassword(password);
     }

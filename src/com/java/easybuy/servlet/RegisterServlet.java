@@ -22,6 +22,13 @@ public class RegisterServlet extends HttpServlet {
         String password = request.getParameter("password");
         String email = request.getParameter("email");
         String mobile = request.getParameter("mobile");
+        String yzm = request.getParameter("yzm");
+        String googlecode = request.getSession().getAttribute(com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY).toString();
+        if (!yzm.equals(googlecode)){
+            request.setAttribute("message", "验证码错误，注册失败");
+            request.getRequestDispatcher("/Regist.jsp").forward(request, response);
+        }
+
         User user = new User(loginName, password, email, mobile);
         UserService userService = new UserServiceImpl();
         int result = userService.register(user);

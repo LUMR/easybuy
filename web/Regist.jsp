@@ -37,7 +37,7 @@
     <script type="text/javascript" src="js/tban.js"></script>
 
     <script type="text/javascript" src="js/lrscroll_1.js"></script>
-
+    <script src="js/service.js"></script>
 
     <title>EasyBuy注册系统</title>
 </head>
@@ -62,7 +62,7 @@
     <div class="regist">
         <div class="log_img"><img src="images/l_img.png" width="611" height="425"/></div>
         <div class="reg_c">
-            <form action="/register" method="post">
+            <form action="/register" method="post" onsubmit="return checkYZM()">
                 <table border="0" style="width:420px; font-size:14px; margin-top:20px;" cellspacing="0" cellpadding="0">
                     <tr height="50" valign="top">
                         <td width="95">&nbsp;</td>
@@ -74,7 +74,8 @@
                     <tr height="50">
                         <td align="right"><font color="#ff4e00">*</font>&nbsp;用户名 &nbsp;</td>
                         <td><label>
-                            <input type="text" name="loginName" value="" class="l_user"/>
+                            <input type="text" name="loginName" value="" class="l_user" onchange=""/>
+                            <span id="message"></span>
                         </label></td>
                     </tr>
                     <tr height="50">
@@ -117,9 +118,15 @@
                         <td align="right"><font color="#ff4e00">*</font>&nbsp;验证码 &nbsp;</td>
                         <td>
                             <label>
-                                <input type="text" value="" class="l_ipt"/>
+                                <input type="text" id="yzm" name="yzm" value="" class="l_ipt"/>
                             </label>
                             <a href="#" style="font-size:12px; font-family:'宋体';">换一张</a>
+                            <img src="kaptcha" alt="验证码" onclick="changeYZM(this)">
+                            <script type="application/javascript">
+                                function changeYZM(img) {
+                                    img.src = "kaptcha?"+Math.floor(Math.random()*100);
+                                }
+                            </script>
                         </td>
                     </tr>
                     <tr>
