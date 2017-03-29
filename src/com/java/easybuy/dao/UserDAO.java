@@ -7,6 +7,8 @@ import com.java.easybuy.vo.User;
  * Created by fsweb on 17-3-28.
  */
 public interface UserDAO {
+	
+	public int liginName(User user);//根据用户名查询是否存在
     /**
      * 根据用户名查询用户是否存在
      * @param user 必须有用户名
