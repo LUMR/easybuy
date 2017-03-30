@@ -6,26 +6,6 @@
     <welcome-file-list>
         <welcome-file>indexTest.jsp</welcome-file>
     </welcome-file-list>
-<<<<<<< HEAD
-    
-    <servlet>
-    <servlet-name>LoginServlet</servlet-name>
-    <servlet-class>com.java.easybuy.servlet.LoginServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-    <servlet-name>LoginServlet</servlet-name>
-    <url-pattern>/login</url-pattern>
-    </servlet-mapping>
-    
-    
-    
-    
-    
-    
-    
-    
-=======
->>>>>>> eb761d4815bf818bbeb7cc7a06e52621340cc61d
 
     <servlet>
         <servlet-name>kaptcha</servlet-name>
@@ -141,9 +121,9 @@
                   url="jdbc:mysql://192.168.1.107:3306/easybuy?useSSL=true"
                   username="webuser"
                   password="wwwlumr"
-                  maxActive="100" //单位是秒
-                  maxIdle="30"
-                  maxWait="100"
+                  maxActive="100" //最大连接数 新版用MaxTotal
+                  maxIdle="30"    //最大空闲连接数
+                  maxWait="100"  //maxWaitMillis 8.5版本用这个
         />
         </Context>
         -->

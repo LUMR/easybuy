@@ -23,7 +23,6 @@ public class User {
     
 
     public User(String loginName) {
-		super();
 		this.loginName = loginName;
 	}
 

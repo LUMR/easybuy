@@ -16,7 +16,7 @@ public class DoExitLogin extends HttpServlet{
 		//清空
 		request.getSession().invalidate();
 		//跳转到显示的主页面
-		response.sendRedirect("DoIndex");
+		response.sendRedirect("IndexServlet");
 	}
 	public void doPost(HttpServletRequest request,HttpServletResponse response)
 		throws ServletException,IOException{

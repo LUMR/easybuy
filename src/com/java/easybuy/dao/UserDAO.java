@@ -8,7 +8,7 @@ import com.java.easybuy.vo.User;
  */
 public interface UserDAO {
 	
-	public int liginName(User user);//根据登录名查询是否存在，存在返回0，不存在返回1
+	int liginName(User user);//根据登录名查询是否存在，存在返回0，不存在返回1
     /**
      * 根据用户名查询用户是否存在
      * @param user 必须有用户名

@@ -1,62 +1,49 @@
 package com.java.easybuy.servlet;
 
-import java.io.IOException;
+import com.java.easybuy.service.impl.UserServiceImpl;
+import com.java.easybuy.utils.SecurityUtils;
+import com.java.easybuy.vo.User;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.java.easybuy.service.impl.UserServiceImpl;
-import com.java.easybuy.utils.SecurityUtils;
-import com.java.easybuy.vo.User;
-
-//@WebServlet(name = "login", urlPatterns = {"/login"})
+import java.io.IOException;
 
 /**
- * 登录Servlet
- * @author Administrator
+ * login
+ * Created by lumr on 2017/3/30.
  */
-
+@WebServlet(name = "login", urlPatterns = {"/login"})
 public class LoginServlet extends HttpServlet {
-
-
-    public void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
-    }
-
-    public void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-        response.setCharacterEncoding("UTF-8");
-        response.setContentType("text/html;chartSet=UTF-8");
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("name");
-        System.out.println(name);
         String password = request.getParameter("password");
-        UserServiceImpl login = new UserServiceImpl();
+
+        UserServiceImpl userService = new UserServiceImpl();
         SecurityUtils securityUtils = new SecurityUtils();
         password = securityUtils.sha1(password);
         User user = new User(name);
-        int i = login.liginName(user);
-
-        System.out.println(password);
-        System.out.println(user.getPassword());
+        int i = userService.liginName(user);
         if (i == 0) {
             String newPassword = user.getPassword();
             if (newPassword.equals(password)) {
-                request.getSession().setAttribute("user", name);//登录成功，保存session
-                request.getRequestDispatcher("index.jsp").forward(request, response);//转发到主页
+                userService.getUserInfo(user);
+                request.getSession().setAttribute("user", user);//登录成功，保存session
+                response.sendRedirect("index");//转发到主页
             } else {
-                request.setAttribute("hint", "密码不正确,password wrong"+name);
+                request.setAttribute("hint", "密码不正确,password wrong" + name);
                 request.getRequestDispatcher("login.jsp").forward(request, response);
             }
         } else {
-            request.setAttribute("hint", "用户不存在,user not exist");
+            request.setAttribute("message","用户不存在啊");
+            request.setAttribute("hint", "用户不存在,user not exist" + name);
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
-
     }
 
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+    }
 }

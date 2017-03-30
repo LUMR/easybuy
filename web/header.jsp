@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.java.easybuy.vo.User" %><%--
   Created by IntelliJ IDEA.
   User: lumr
   Date: 2017/3/29
@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--公共header--%>
 
 <div class="soubg">
@@ -89,28 +89,26 @@
         </span>
         <!--End 所在收货地区 End-->
 
-        
-         <% 
-    Object o=session.getAttribute("user");
-    if(null==o){
-    %>
-        
-        
-        <span class="fr">
-        	<span class="fl">你好，请<a href="Login.html">登录</a>&nbsp; <a href="Regist.jsp" style="color:#ff4e00;">免费注册</a>&nbsp;|&nbsp;<a
-                    href="#">我的订单</a>&nbsp;|</span>
-        	<span class="ss">
 
-      <%}else {
-     out.print("欢迎你:"+o.toString());
-     
-     %>
-    &nbsp; <a href="Logout.jsp">注销</a>
-     <%
-     } 
-     %>     	
-        	
-        	
+        <%
+            User user = (User) session.getAttribute("user");
+            if (null == user) {
+        %>
+
+        <span class="fr">
+        	<span class="fl">你好，请<a href="login.jsp">登录</a>&nbsp; <a href="Regist.jsp" style="color:#ff4e00;">免费注册</a>&nbsp;|&nbsp;
+
+        <%
+            } else {
+        %>
+            <span class="fr">
+        	<span class="fl">你好，<a href="member/Member.html"><%=user.getLoginName()%></a>&nbsp;|&nbsp;&nbsp; <a
+                    href="Logout.jsp">注销</a>
+        <%
+            }
+        %>
+                <a href="#">我的订单</a>&nbsp;|</span>
+        	<span class="ss">
             	<div class="ss_list">
                 	<a href="#">收藏夹</a>
                     <div class="ss_list_bg">
@@ -170,7 +168,9 @@
         <div class="car_t">购物车 [ <span>3</span> ]</div>
         <div class="car_bg">
             <!--Begin 购物车未登录 Begin-->
+            <c:if test="${user == null}">
             <div class="un_login">还未登录！<a href="Login.html" style="color:#ff4e00;">马上登录</a> 查看购物车！</div>
+            </c:if>
             <!--End 购物车未登录 End-->
             <!--Begin 购物车已登录 Begin-->
             <ul class="cars">

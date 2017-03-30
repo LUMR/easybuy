@@ -87,11 +87,10 @@ public class ProductDaoImpl extends BaseDAO implements ProductDao {
     }
 
     //根据编号获取商品
-    @Override
     public Product getProduct(int id) {
         conn = getConnection();
         Product product = null;
-        String sql = "select * from easybuy_product where eaysbuy_product_id=?";
+        String sql = "select * from easybuy_product where id=?";
         try {
             this.ps = this.conn.prepareStatement(sql);
             this.ps.setInt(1, id);
@@ -169,9 +168,10 @@ public class ProductDaoImpl extends BaseDAO implements ProductDao {
     }
 
     //根据类别查找商品集合
-    public List<Product> getAllByCategoryLevel1Id(int cid) {
+    @Override
+    public List<Product> getAllByCategoryLevel3Id(int cid) {
         List<Product> Products = new ArrayList<>();
-        String sql = "select * from easybuy_product where easybuy_product_level1Id=?";
+        String sql = "select * from easybuy_product where categoryLevel3Id=?";
         conn = getConnection();
         try {
             this.ps = this.conn.prepareStatement(sql);

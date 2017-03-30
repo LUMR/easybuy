@@ -4,7 +4,6 @@ import com.java.easybuy.dao.CategoryDao;
 import com.java.easybuy.dao.NewsDao;
 import com.java.easybuy.dao.impl.CategoryDaoImpl;
 import com.java.easybuy.dao.impl.NewsDaoImpl;
-import com.java.easybuy.vo.Category;
 import com.java.easybuy.vo.News;
 
 import javax.servlet.ServletException;

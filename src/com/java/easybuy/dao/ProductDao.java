@@ -25,6 +25,8 @@ public interface ProductDao {
      */
     Product getProduct(int id);
 
+    List<Product> getAllByCategoryLevel3Id(int cid);
+
     int addProduct(Product product);
 
     int upDateProduct(Product product);

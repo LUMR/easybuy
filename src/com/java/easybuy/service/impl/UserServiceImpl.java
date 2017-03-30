@@ -31,4 +31,10 @@ public class UserServiceImpl implements UserService {
 		UserDAO userDAO = new UserDAOImpl();
 		return userDAO.liginName(user);
 	}
+
+    @Override
+    public void getUserInfo(User user) {
+        UserDAO dao = new UserDAOImpl();
+        dao.getUserInfo(user);
+    }
 }
