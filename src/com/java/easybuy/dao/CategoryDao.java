@@ -5,7 +5,7 @@ import com.java.easybuy.vo.Category;
 import java.util.List;
 
 /**
- * categoryDao
+ * 商品分类Dao
  * Created by lumr on 2017/3/29.
  */
 public interface CategoryDao {

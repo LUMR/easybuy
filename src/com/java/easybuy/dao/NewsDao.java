@@ -6,7 +6,7 @@ import com.java.easybuy.vo.News;
 
 public interface NewsDao {
 	//获取所有新闻
-	public List<News> getAll(int pageIndex, int pageSize);
+	public List<News> getAllNews(int pageIndex, int pageSize);
 	//根据编号获取新闻
 	public News getById(int id);
 	//新增

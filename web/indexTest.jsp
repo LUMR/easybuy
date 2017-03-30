@@ -15,6 +15,7 @@
   <a href="/mysqlTest">数据库测试</a>
   <a href="/Regist.jsp">注册</a>
   <a href="/index">商品类别显示</a>
+  <a href="login.jsp">登录</a>
   	<form action="yzm" method="post">
 	    <img title = "点我换一张" alt="" src="kaptcha" style="cursor:pointer;" onclick="changeVerifyCode(this);">
     	<input type="text" name="yzm">
