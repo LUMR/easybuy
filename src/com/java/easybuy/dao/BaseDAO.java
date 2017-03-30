@@ -43,6 +43,7 @@ public class BaseDAO {
 
     /**
      * 使用连接池连接数据库
+     *
      * @return 返回一个数据库连接的引用
      */
     public Connection getConnection() {
@@ -58,23 +59,24 @@ public class BaseDAO {
 
     /**
      * prepareStatement的executeUpdate方法
+     *
      * @param sql sql中的?必须与obj[]数组的顺序对应
      * @param obj 参数数组
      * @return 返回值>0表示更新成功,0表示失败,-1表示数据库错误
      */
-    public int preUpdate(String sql,Object[] obj){
+    public int preUpdate(String sql, Object[] obj) {
         int result = 0;
         conn = getConnection();
         try {
             ps = conn.prepareStatement(sql);
             for (int i = 0; i < obj.length; i++) {
-                ps.setObject(i+1,obj[i]);
+                ps.setObject(i + 1, obj[i]);
             }
             result = ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
             result = -1;
-        }finally {
+        } finally {
             closeAll();
         }
         return result;
@@ -82,21 +84,18 @@ public class BaseDAO {
 
     /**
      * prepareStatement的executeQuery方法,使用此方法记得手动调用closeAll关闭数据库连接
+     *
      * @param sql 同上
      * @param obj 同上
-     * @return 返回ResultSet,不会自动关闭conn连接，必须手动关闭
+     * @return 返回ResultSet, 使用时要注意返回值有可能为空，且不会自动关闭conn连接，必须手动关闭
      */
-    public ResultSet preQuery(String sql,Object[] obj){
+    public ResultSet preQuery(String sql, Object[] obj) throws SQLException {
         conn = getConnection();
-        try {
-            ps = conn.prepareStatement(sql);
-            for (int i = 0; i < obj.length; i++) {
-                ps.setObject(i+1,obj[i]);
-            }
-            rs = ps.executeQuery();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        ps = conn.prepareStatement(sql);
+        for (int i = 0; i < obj.length; i++) {
+            ps.setObject(i + 1, obj[i]);
         }
+        rs = ps.executeQuery();
         return rs;
     }
 

@@ -10,6 +10,12 @@ import com.java.easybuy.vo.User;
  */
 public class UserServiceImpl implements UserService {
     @Override
+    public int loginName(User user) {
+        UserDAO ea=new UserDAOImpl();
+        return ea.liginName(user);
+    }
+
+    @Override
     public int register(User user) {
         UserDAO userDAO = new UserDAOImpl();
         return userDAO.addUser(user);

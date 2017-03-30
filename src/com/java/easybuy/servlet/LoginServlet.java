@@ -7,14 +7,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.java.easybuy.dao.impl.LoginDAOImpl;
+import com.java.easybuy.dao.UserDAO;
+import com.java.easybuy.dao.impl.UserDAOImpl;
 import com.java.easybuy.vo.User;
 
-@WebServlet(urlPatterns={"/login"})
+@WebServlet(name = "login",urlPatterns={"/login"})
 /**
  * 登录Servlet
  * @author Administrator
- *
  */
 
 public class LoginServlet extends HttpServlet {
@@ -25,7 +25,7 @@ public class LoginServlet extends HttpServlet {
               
 		      String name=request.getParameter("name");
               String password=request.getParameter("password");
-              LoginDAOImpl login=new LoginDAOImpl();
+              UserDAO login=new UserDAOImpl();
               User user=new User(name);
              int i = login.liginName(user);
 		     if(i==0){
@@ -33,7 +33,7 @@ public class LoginServlet extends HttpServlet {
 		    	 if(newPassword.equals(password)){
 		    		 System.out.println("登录成功");
 		    		 request.getSession().setAttribute(name, name);
-		    		 response.sendRedirect("index.jsp");
+		    		 response.sendRedirect("indexTest.jsp");
 		    	 }
 		    	 else{
 		    		 System.out.println("密码不正确");
