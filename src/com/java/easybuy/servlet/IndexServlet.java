@@ -7,6 +7,7 @@ import com.java.easybuy.service.impl.NewsServiceImpl;
 import com.java.easybuy.vo.Category;
 import com.java.easybuy.vo.News;
 
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -42,5 +43,6 @@ public class IndexServlet extends HttpServlet {
         List<News> newsList = newsService.getAllNews();
         req.setAttribute("newsList",newsList);
         req.getRequestDispatcher("/index.jsp").forward(req,resp);
+
     }
 }

@@ -6,6 +6,7 @@
     <welcome-file-list>
         <welcome-file>indexTest.jsp</welcome-file>
     </welcome-file-list>
+<<<<<<< HEAD
     
     <servlet>
     <servlet-name>LoginServlet</servlet-name>
@@ -23,6 +24,8 @@
     
     
     
+=======
+>>>>>>> eb761d4815bf818bbeb7cc7a06e52621340cc61d
 
     <servlet>
         <servlet-name>kaptcha</servlet-name>

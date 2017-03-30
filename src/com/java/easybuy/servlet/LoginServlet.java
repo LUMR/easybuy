@@ -12,6 +12,7 @@ import com.java.easybuy.utils.SecurityUtils;
 import com.java.easybuy.vo.User;
 
 //@WebServlet(name = "login", urlPatterns = {"/login"})
+
 /**
  * 登录Servlet
  * @author Administrator

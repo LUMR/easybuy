@@ -8,7 +8,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%--公共header--%>
-	
 
 <div class="soubg">
     <div class="sou">
@@ -89,7 +88,7 @@
             </span>
         </span>
         <!--End 所在收货地区 End-->
-        
+
         
          <% 
     Object o=session.getAttribute("user");
@@ -101,7 +100,7 @@
         	<span class="fl">你好，请<a href="Login.html">登录</a>&nbsp; <a href="Regist.jsp" style="color:#ff4e00;">免费注册</a>&nbsp;|&nbsp;<a
                     href="#">我的订单</a>&nbsp;|</span>
         	<span class="ss">
-        	
+
       <%}else {
      out.print("欢迎你:"+o.toString());
      
