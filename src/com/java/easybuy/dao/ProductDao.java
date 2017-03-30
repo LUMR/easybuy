@@ -16,6 +16,7 @@ public interface ProductDao {
      * @return 返回商品的结果集
      */
     List<Product> getAllProducts(Category category);
+    List<Product> getAllProducts(int page,int pageSize);
 
     /**
      * 根据商品id返回对应的商品

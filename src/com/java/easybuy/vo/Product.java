@@ -27,7 +27,9 @@ public class Product implements Serializable {
     //购买数量
     private int count = 1;
 
-    public Product(){}
+    public Product() {
+    }
+
     public Product(int id, String name, String description, double price, int stock, int categoryLevel1Id, int categoryLevel2Id, int categoryLevel3Id, String fileName) {
         this.id = id;
         this.name = name;
