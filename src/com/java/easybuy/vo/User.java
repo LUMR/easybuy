@@ -23,7 +23,6 @@ public class User {
     
 
     public User(String loginName) {
-		super();
 		this.loginName = loginName;
 	}
 
@@ -102,8 +101,7 @@ public class User {
     }
 
     public void setPassword(String password) {
-        SecurityUtils utils = new SecurityUtils();
-        this.password = utils.sha1(password);
+        this.password = password;
     }
 
     public String getUserName() {

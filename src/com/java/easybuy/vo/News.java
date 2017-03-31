@@ -15,6 +15,13 @@ public class News {
     //录入日期
     private Date createTime;
 
+    public News(int id, String title, String content, Date createTime) {
+        this.id = id;
+        this.title = title;
+        this.content = content;
+        this.createTime = createTime;
+    }
+
     public int getId() {
         return id;
     }

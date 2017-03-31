@@ -11,10 +11,12 @@
     <title>主页</title>
   </head>
   <body>
-  <a href="index.jsp">主页</a>
+  <a href="index">主页</a>
   <a href="/mysqlTest">数据库测试</a>
   <a href="/Regist.jsp">注册</a>
   <a href="/index">商品类别显示</a>
+  <a href="/productlist?cid3=655">商品列表</a>
+  <a href="login.jsp">登录</a>
   	<form action="yzm" method="post">
 	    <img title = "点我换一张" alt="" src="kaptcha" style="cursor:pointer;" onclick="changeVerifyCode(this);">
     	<input type="text" name="yzm">
