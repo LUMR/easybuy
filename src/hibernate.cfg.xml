@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<hibernate-configuration xmlns="http://www.hibernate.org/xsd/hibernate-configuration">
+    <session-factory>
+        <property name="connection.url">jdbc:mysql://192.168.1.107:3306/easybuy?useSSL=true</property>
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <mapping class="com.java.easybuy.entity.NewsEntity"/>
+        <mapping resource="com/java/easybuy/entity/NewsEntity.hbm.xml"/>
+        <mapping class="com.java.easybuy.entity.OrderEntity"/>
+        <mapping resource="com/java/easybuy/entity/OrderEntity.hbm.xml"/>
+        <mapping class="com.java.easybuy.entity.ProductEntity"/>
+        <mapping resource="com/java/easybuy/entity/ProductEntity.hbm.xml"/>
+        <mapping class="com.java.easybuy.entity.CategoryEntity"/>
+        <mapping resource="com/java/easybuy/entity/CategoryEntity.hbm.xml"/>
+        <mapping class="com.java.easybuy.entity.EasybuyUserEntity"/>
+        <mapping resource="com/java/easybuy/entity/EasybuyUserEntity.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>

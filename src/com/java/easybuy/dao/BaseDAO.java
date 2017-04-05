@@ -1,5 +1,10 @@
 package com.java.easybuy.dao;
 
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -14,6 +19,21 @@ public class BaseDAO {
     protected Connection conn;
     protected PreparedStatement ps;
     protected ResultSet rs;
+
+    private static Configuration configuration;
+    private static SessionFactory sessionFactory;
+    static {
+        try{
+            configuration = new Configuration().configure();
+            sessionFactory = configuration.buildSessionFactory();
+        }catch (HibernateException e){
+            e.printStackTrace();
+        }
+    }
+
+    public Session getSession(){
+        return sessionFactory.getCurrentSession();
+    }
 
     /**
      * @return 返回一个连接
